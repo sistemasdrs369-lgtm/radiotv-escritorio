@@ -1,6 +1,6 @@
-package br.com.drs.radiotv_escritorio.model;
+package br.com.drs.radiotv_escritorio.dto;
 
-import jakarta.persistence.*;
+import br.com.drs.radiotv_escritorio.model.Funcionario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,15 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "endereco_db")
-public class Endereco {
+public class EnderecoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private Funcionario funcionario;
 
     private String cep;
