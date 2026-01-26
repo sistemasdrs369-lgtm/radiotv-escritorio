@@ -1,9 +1,11 @@
 package br.com.drs.radiotv_escritorio.model;
 
 import br.com.drs.radiotv_escritorio.model.enuns.Sexo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -24,19 +26,16 @@ public class Funcionario {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Documentos documentos;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Endereco endereco;
-
     private String email;
 
     private String telefone;
 
     private String celular;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
+    private BigDecimal salario;
 
     private Boolean ativo;
 }

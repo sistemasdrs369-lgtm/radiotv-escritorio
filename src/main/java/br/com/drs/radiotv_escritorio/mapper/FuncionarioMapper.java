@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface FuncionarioMapper {
 
-    FuncionarioDTO toDTO(Funcionario funcionario);
-
     Funcionario toEntity(FuncionarioDTO funcionarioDTO);
+
+    FuncionarioDTO toDTO(Funcionario funcionario);
 }

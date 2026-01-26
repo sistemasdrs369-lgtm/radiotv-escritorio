@@ -1,12 +1,9 @@
 package br.com.drs.radiotv_escritorio.dto;
 
-import br.com.drs.radiotv_escritorio.model.Documentos;
+import br.com.drs.radiotv_escritorio.model.Documento;
 import br.com.drs.radiotv_escritorio.model.Endereco;
 import br.com.drs.radiotv_escritorio.model.enuns.Sexo;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,13 +19,10 @@ public class FuncionarioDTO {
 
     private String nomeFuncionario;
 
-    @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Documentos documentos;
+    private Documento documento;
 
-    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
     private String email;
@@ -37,6 +31,7 @@ public class FuncionarioDTO {
 
     private String celular;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     private Boolean ativo;
