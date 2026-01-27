@@ -1,10 +1,18 @@
-package br.com.drs.radiotv_escritorio.model;
+package br.com.drs.radiotv_escritorio.dto;
 
+import br.com.drs.radiotv_escritorio.model.Documento;
+import br.com.drs.radiotv_escritorio.model.Endereco;
 import br.com.drs.radiotv_escritorio.model.enuns.EstadoCivil;
 import br.com.drs.radiotv_escritorio.model.enuns.Sexo;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,14 +21,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-@Table(name = "funcionario_db")
-public class Funcionario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class FuncionarioDTO {
 
     private String nomeFuncionario;
 
