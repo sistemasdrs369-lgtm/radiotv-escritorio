@@ -21,7 +21,11 @@ public class Documento {
 
     private String cpf;
 
+    private String cnpj;
+
     private String rg;
+
+    private String inscricaoEstadual;
 
     private String cnh;
 
