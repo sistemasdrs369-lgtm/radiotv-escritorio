@@ -24,7 +24,6 @@ public class ContratoService {
 
     public ContratoDTO save(@RequestBody ContratoDTO contratoDTO) {
         Contrato contrato = mapper.toEntity(contratoDTO);
-        buscarPorNomeFantasia(contrato.getCliente().getId());
         Contrato result = repository.save(contrato);
         return mapper.toDto(result);
     }
@@ -52,12 +51,4 @@ public class ContratoService {
     public void deleteById(@PathVariable Long id) {
         repository.deleteById(id);
     }
-
-    public ContratoDTO buscarPorNomeFantasia(Long clienteId) {
-        Contrato contrato = repository.findByCliente(clienteId)
-                .orElseThrow(() -> new RuntimeException("Contrato não encontrado para o Cliente ID: " + clienteId));
-        System.out.println(clienteId);
-        return mapper.toDto(contrato);
-    }
-
 }

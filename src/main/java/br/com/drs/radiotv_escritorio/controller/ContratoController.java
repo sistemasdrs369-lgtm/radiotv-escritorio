@@ -30,5 +30,13 @@ public class ContratoController {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ContratoDTO> atualizarContrato(@PathVariable Long id, @RequestBody ContratoDTO dto) {
+        return ResponseEntity.ok(service.atualizarContrato(id, dto));
+    }
 
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        service.deleteById(id);
+    }
 }
