@@ -3,14 +3,12 @@ package br.com.drs.radiotv_escritorio.service;
 import br.com.drs.radiotv_escritorio.dto.ContratoDTO;
 import br.com.drs.radiotv_escritorio.mapper.ContratoMapper;
 import br.com.drs.radiotv_escritorio.model.Contrato;
-import br.com.drs.radiotv_escritorio.repository.ClienteRepository;
 import br.com.drs.radiotv_escritorio.repository.ContratoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,35 +18,38 @@ public class ContratoService {
 
     private final ContratoMapper mapper;
 
-    private final ClienteRepository clienteRepository;
-
-    public ContratoDTO save(@RequestBody ContratoDTO contratoDTO) {
-        Contrato contrato = mapper.toEntity(contratoDTO);
-        Contrato result = repository.save(contrato);
-        return mapper.toDto(result);
+    public ContratoDTO salvarContrato(ContratoDTO dto) {
+        Contrato contrato = mapper.toEntity(dto);
+        contrato = repository.save(contrato);
+        return mapper.toDTO(contrato);
     }
 
     public List<ContratoDTO> findAll() {
-        return repository.findAll().stream()
-                .map(mapper::toDto)
-                .toList();
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public ContratoDTO findById(Long id) {
+    public ContratoDTO buscarContratoPorId(Long id) {
         return repository.findById(id)
-                .map(mapper::toDto)
+                .map(mapper::toDTO)
                 .orElseThrow(() -> new RuntimeException("Contrato não encontrado"));
     }
 
-    public ContratoDTO atualizarContrato(@PathVariable Long id, @RequestBody ContratoDTO contratoDTO) {
+    public ContratoDTO atualizarContrato(Long id, ContratoDTO dto) {
         Contrato contratoExistente = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Contrato não encontrado"));
-        Contrato contratoAtualizado  = mapper.toEntity(contratoDTO);
-        Contrato contartoAtualizado = repository.save(contratoExistente);
-        return mapper.toDto(contartoAtualizado);
+
+        Contrato contratoAtualizado = mapper.toEntity(dto);
+        contratoAtualizado.setId(contratoExistente.getId());
+        contratoAtualizado = repository.save(contratoAtualizado);
+        return mapper.toDTO(contratoAtualizado);
     }
 
-    public void deleteById(@PathVariable Long id) {
-        repository.deleteById(id);
+    public void deletarContrato(Long id) {
+        Contrato contrato = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Contrato não encontrado"));
+        repository.delete(contrato);
     }
 }

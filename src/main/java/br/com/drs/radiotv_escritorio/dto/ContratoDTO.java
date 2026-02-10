@@ -1,7 +1,5 @@
 package br.com.drs.radiotv_escritorio.dto;
 
-import br.com.drs.radiotv_escritorio.model.Agenciador;
-import br.com.drs.radiotv_escritorio.model.Agencias;
 import br.com.drs.radiotv_escritorio.model.Cliente;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -18,11 +16,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ContratoDTO {
 
-    private Agencias agencias_id;
+    private Cliente cliente;
 
-    private Agenciador agenciador_id;
-
-    private Cliente cliente_id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate assinatura;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate inicio;
@@ -30,8 +27,8 @@ public class ContratoDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate termino;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    private LocalDate assinatura;
+    private BigDecimal valorTotalContrato;
 
-    private BigDecimal valorContrato;
+    private Boolean ativo;
+
 }

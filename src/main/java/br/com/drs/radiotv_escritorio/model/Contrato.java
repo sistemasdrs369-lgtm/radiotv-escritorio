@@ -13,24 +13,19 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "contrato_db")
+@Table(name = "contrato")
 public class Contrato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne()
-    @JoinColumn(name = "agencias_id")
-    private Agencias agencias_id;
-
-    @OneToOne()
-    @JoinColumn(name = "agenciador_id")
-    private Agenciador agenciador_id;
-
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente_id;
+    private Cliente cliente;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate assinatura;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate inicio;
@@ -38,9 +33,7 @@ public class Contrato {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate termino;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    private LocalDate assinatura;
+    private BigDecimal valorTotalContrato;
 
-    @Column(nullable = true)
-    private BigDecimal valorContrato;
+    private Boolean ativo;
 }

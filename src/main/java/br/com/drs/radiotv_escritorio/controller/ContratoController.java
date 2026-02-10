@@ -16,27 +16,27 @@ public class ContratoController {
     private final ContratoService service;
 
     @PostMapping
-    public ResponseEntity<ContratoDTO> save(@RequestBody ContratoDTO dto) {
-        return ResponseEntity.ok(service.save(dto));
+    public ResponseEntity<ContratoDTO> salvar(@RequestBody ContratoDTO contratoDTO){
+        return ResponseEntity.ok(service.salvarContrato(contratoDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<ContratoDTO>> findAll() {
+    public ResponseEntity<List<ContratoDTO>> buscarTodos(){
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContratoDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findById(id));
+    public ResponseEntity<ContratoDTO> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.ok(service.buscarContratoPorId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContratoDTO> atualizarContrato(@PathVariable Long id, @RequestBody ContratoDTO dto) {
+    public ResponseEntity<ContratoDTO> atualizar(@PathVariable Long id, @RequestBody ContratoDTO dto) {
         return ResponseEntity.ok(service.atualizarContrato(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
-        service.deleteById(id);
+    public void apagarContrato(@PathVariable Long id) {
+        service.deletarContrato(id);
     }
 }
