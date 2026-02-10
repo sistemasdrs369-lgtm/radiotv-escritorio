@@ -57,9 +57,9 @@ public class ContratoPagamentoService {
 
     public void incluirParcelasAgenciador(ContratoPagamento pagamento) {
         Contrato contrato = pagamento.getContrato();
-        Agenciador agenciador = contrato.getAgenciador();
+        Agenciador agenciador = contrato.getAgenciador_id();
         if (pagamento.getContrato().getId().equals(contrato.getId())) {
-            if (agenciador.getId().equals(contrato.getAgenciador().getId())) {
+            if (agenciador.getId().equals(contrato.getAgenciador_id().getId())) {
                 BigDecimal vendasMes = agenciador.getVendasMes();
                 BigDecimal valorPagamento = pagamento.getValor();
                 BigDecimal novoValorVendasMes = vendasMes.add(valorPagamento);
