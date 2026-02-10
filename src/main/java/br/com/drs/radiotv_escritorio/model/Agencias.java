@@ -23,10 +23,12 @@ public class Agencias {
 
     private String nomeFantasia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "documento_id", unique = true)
     private Documento documento;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

@@ -18,12 +18,14 @@ public class Familia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
     private String conjugue;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "documento_id", unique = true)
     private Documento documento;
 
     @Enumerated(EnumType.STRING)

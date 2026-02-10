@@ -20,13 +20,16 @@ public class Contrato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "agencias_id")
     private Agencias agencias;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "agenciador_id")
     private Agenciador agenciador;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
@@ -38,5 +41,6 @@ public class Contrato {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate assinatura;
 
+    @Column(nullable = true)
     private BigDecimal valorContrato;
 }

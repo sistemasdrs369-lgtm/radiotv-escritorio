@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/funcionarios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class FuncionarioController {
 
     private final FuncionarioService service;

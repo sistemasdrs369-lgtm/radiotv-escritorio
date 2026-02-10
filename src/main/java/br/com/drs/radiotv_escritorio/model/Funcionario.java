@@ -24,10 +24,12 @@ public class Funcionario {
 
     private String nomeFuncionario;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "documento_id", unique = true)
     private Documento documento;
 
     @Enumerated(EnumType.STRING)
@@ -36,6 +38,7 @@ public class Funcionario {
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
+    @Column(unique = true)
     private String email;
 
     private String telefone;

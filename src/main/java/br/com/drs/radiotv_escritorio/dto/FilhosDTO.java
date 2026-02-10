@@ -1,6 +1,7 @@
 package br.com.drs.radiotv_escritorio.dto;
 
 import br.com.drs.radiotv_escritorio.model.Documento;
+import br.com.drs.radiotv_escritorio.model.Familia;
 import br.com.drs.radiotv_escritorio.model.enuns.Sexo;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.EnumType;
@@ -19,14 +20,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class FilhosDTO {
 
+    private Familia familia;
+
     private String nome;
 
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
     private LocalDate dataNascimento;
-
-    private int idade;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Documento documento;

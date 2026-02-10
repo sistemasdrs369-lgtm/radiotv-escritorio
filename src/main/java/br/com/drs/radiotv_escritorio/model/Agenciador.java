@@ -18,7 +18,8 @@ public class Agenciador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
     private BigDecimal vendasMes;

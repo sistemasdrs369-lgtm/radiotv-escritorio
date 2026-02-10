@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/agenciadores")
+@RequestMapping("/api/agenciador")
 @RequiredArgsConstructor
 public class AgenciadorController {
 
     private final AgenciadorService service;
 
     @PostMapping
-    public ResponseEntity<AgenciadorDTO> salvarAgenciador(AgenciadorDTO agenciadorDTO) {
+    public ResponseEntity<AgenciadorDTO> salvarAgenciador(@RequestBody AgenciadorDTO agenciadorDTO) {
         return ResponseEntity.ok(service.create(agenciadorDTO));
     }
 
