@@ -22,15 +22,15 @@ public class Contrato {
 
     @OneToOne()
     @JoinColumn(name = "agencias_id")
-    private Agencias agencias;
+    private Agencias agencias_id;
 
     @OneToOne()
     @JoinColumn(name = "agenciador_id")
-    private Agenciador agenciador;
+    private Agenciador agenciador_id;
 
     @OneToOne()
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Cliente cliente_id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate inicio;

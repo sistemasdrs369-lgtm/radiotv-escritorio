@@ -18,11 +18,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ContratoDTO {
 
-    private Agencias agencias;
+    private Agencias agencias_id;
 
-    private Agenciador agenciador;
+    private Agenciador agenciador_id;
 
-    private Cliente cliente;
+    private Cliente cliente_id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate inicio;
