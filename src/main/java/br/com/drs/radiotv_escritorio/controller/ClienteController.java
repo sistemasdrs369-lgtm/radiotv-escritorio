@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/cliente")
 @RequiredArgsConstructor
@@ -18,11 +16,6 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<ClienteDTO> salvar(@RequestBody ClienteDTO clienteDTO){
         return ResponseEntity.ok(service.salvarCliente(clienteDTO));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<ClienteDTO>> listar(){
-        return ResponseEntity.ok(service.listarClientes());
     }
 
     @GetMapping("/{id}")

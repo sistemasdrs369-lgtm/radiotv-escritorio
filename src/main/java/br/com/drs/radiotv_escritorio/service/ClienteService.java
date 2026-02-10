@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class ClienteService {
@@ -22,12 +20,6 @@ public class ClienteService {
         Cliente cliente = mapper.toEntity(dto);
         cliente = repository.save(cliente);
         return mapper.toDTO(cliente);
-    }
-
-    public List<ClienteDTO> listarClientes() {
-        return repository.findAll().stream()
-                .map(mapper::toDTO)
-                .toList();
     }
 
     public ClienteDTO buscarClientePorId(Long id) {

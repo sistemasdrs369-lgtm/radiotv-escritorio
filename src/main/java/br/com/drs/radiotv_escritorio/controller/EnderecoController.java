@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/enderecos")
 @RequiredArgsConstructor
@@ -19,11 +17,6 @@ public class EnderecoController {
     @PostMapping
     public ResponseEntity<EnderecoDTO> criar(@RequestBody EnderecoDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(dto));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<EnderecoDTO>> listar() {
-        return ResponseEntity.ok(service.listarTodos());
     }
 
     @GetMapping("/{id}")

@@ -6,10 +6,7 @@ import br.com.drs.radiotv_escritorio.model.Agencias;
 import br.com.drs.radiotv_escritorio.repository.AgenciasRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,19 +14,12 @@ import java.util.Optional;
 public class AgenciasService {
 
     private final AgenciasRepository repository;
-
     private final AgenciasMapper mapper;
 
-    public AgenciasDTO salvarAgencias(@RequestBody AgenciasDTO agenciasDTO) {
+    public AgenciasDTO salvarAgencias(AgenciasDTO agenciasDTO) {
         Agencias agencias = mapper.toEntity(agenciasDTO);
         agencias = repository.save(agencias);
         return mapper.toDTO(agencias);
-    }
-
-    public List<AgenciasDTO> listarAgencias() {
-        return repository.findAll().stream()
-                .map(mapper::toDTO)
-                .toList();
     }
 
     public AgenciasDTO buscarPorId(Long id) {
@@ -42,7 +32,7 @@ public class AgenciasService {
         return repository.findByNomeFantasia(nomeFantasia);
     }
 
-    public AgenciasDTO atualizarAgencias(@PathVariable Long id, @RequestBody AgenciasDTO agenciasDTO) {
+    public AgenciasDTO atualizarAgencias(Long id, AgenciasDTO agenciasDTO) {
         Agencias agenciasExistentes = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Agencia não encontrado"));
 
@@ -52,12 +42,10 @@ public class AgenciasService {
         return mapper.toDTO(agenciasAtualizadas);
     }
 
-    public AgenciasDTO apagarAgencia(@PathVariable Long id) {
+    public AgenciasDTO apagarAgencia(Long id) {
         Agencias agencias = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Agencia não encontrada"));
         repository.delete(agencias);
         return mapper.toDTO(agencias);
     }
-
-
 }
