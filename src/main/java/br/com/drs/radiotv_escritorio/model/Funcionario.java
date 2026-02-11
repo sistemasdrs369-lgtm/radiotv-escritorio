@@ -1,6 +1,7 @@
 package br.com.drs.radiotv_escritorio.model;
 
 import br.com.drs.radiotv_escritorio.model.enuns.Sexo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Funcionario {
 
     private String nome;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     @Enumerated(EnumType.STRING)
@@ -32,6 +34,7 @@ public class Funcionario {
 
     private String cnh;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataVencimento;
 
     private String categoria;

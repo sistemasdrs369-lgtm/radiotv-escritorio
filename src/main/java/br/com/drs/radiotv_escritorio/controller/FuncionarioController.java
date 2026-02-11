@@ -15,7 +15,7 @@ public class FuncionarioController {
     private final FuncionarioService service;
 
     @PostMapping
-    public Funcionario salvarFuncionario(Funcionario funcionario) {
+    public Funcionario salvarFuncionario(@RequestBody Funcionario funcionario) {
         return service.salvarFuncionario(funcionario);
     }
 
@@ -30,7 +30,7 @@ public class FuncionarioController {
     }
 
     @PutMapping
-    public Funcionario atualizarFuncionario(Long id, Funcionario funcionarioAtualizado) {
+    public Funcionario atualizarFuncionario(@PathVariable Long id, @RequestBody Funcionario funcionarioAtualizado) {
         return service.atualizarFuncionario(id, funcionarioAtualizado);
     }
 
