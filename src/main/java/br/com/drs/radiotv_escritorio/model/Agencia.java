@@ -45,7 +45,7 @@ public class Agencia {
 
     private String celular;
 
-    private int contratosAtivos;
+    private Integer contratosAtivos;
 
     private BigDecimal valorTotalContratos;
 

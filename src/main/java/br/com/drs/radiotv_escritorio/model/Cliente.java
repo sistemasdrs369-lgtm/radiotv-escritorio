@@ -44,7 +44,7 @@ public class Cliente {
 
     private String celular;
 
-    private int contratosAtivos;
+    private Integer contratosAtivos;
 
     private  Boolean primeiroContrato;
 }

@@ -24,7 +24,7 @@ public class Vendedor {
 
     private BigDecimal vendasMes;
 
-    private int comissaoPercentual;
+    private Integer comissaoPercentual;
 
     private BigDecimal comissaoValorMes;
 
