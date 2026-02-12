@@ -27,6 +27,4 @@ public class Vendedor {
     private Integer comissaoPercentual;
 
     private BigDecimal comissaoValorMes;
-
-    private BigDecimal vendasProximoMes;
 }

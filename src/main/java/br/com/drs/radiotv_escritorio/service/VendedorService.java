@@ -26,12 +26,12 @@ public class VendedorService {
         return repository.findById(id).orElse(null);
     }
 
-    public Vendedor atualizarVendedor(Long id, @RequestBody Vendedor vendedorAtualizado) {
-        return repository.findById(id)
-                .map(vendedor -> {
-                    return repository.save(vendedor);
-                })
-                .orElse(null);
+    public Vendedor atualizarVendedor(Long id, @RequestBody Vendedor vendedor) {
+        Vendedor vendedorExistente = repository.findById(id).orElse(null);
+        if (vendedorExistente != null) {
+            return repository.save(vendedorExistente);
+        }
+        return null;
     }
 
     public void deletarVendedor(Long id) {
